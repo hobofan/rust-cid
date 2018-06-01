@@ -15,7 +15,7 @@ macro_rules! build_codec_enum {
             pub fn from(raw: u64) -> Result<Codec> {
                 match raw {
                     $( $val => Ok($var), )*
-                    _ => Err(Error::UnkownCodec),
+                    _ => Err(Error::UnknownCodec),
                 }
             }
         }
@@ -36,6 +36,7 @@ build_codec_enum! {
     0x55 => Raw,
     0x70 => DagProtobuf,
     0x71 => DagCBOR,
+    0x78 => GitRaw,
     0x90 => EthereumBlock,
     0x91 => EthereumBlockList,
     0x92 => EthereumTxTrie,
@@ -43,6 +44,7 @@ build_codec_enum! {
     0x94 => EthereumTxReceiptTrie,
     0x95 => EthereumTxReceipt,
     0x96 => EthereumStateTrie,
+    0x97 => EthereumAccountSnapshot,
     0x98 => EthereumStorageTrie,
     0xb0 => BitcoinBlock,
     0xb1 => BitcoinTx,
